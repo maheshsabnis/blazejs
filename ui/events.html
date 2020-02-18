@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        td {
+            width: auto;
+            border: double;
+        }
+        
+        input,
+        label {
+            font-size: 20px;
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+    <script src="./events.js"></script>
+    <script>
+        function basicCalculator() {
+            var calObj = new Calculator();
+            // read elements with their names
+            var btnadd = document.getElementById('add');
+            btnadd.addEventListener('click', function() {
+                // read data from the input:text elements
+                var n1 = parseInt(document.getElementById('txtn1').value);
+                var n2 = parseInt(document.getElementById('txtn2').value);
+                var res = calObj.add(n1, n2);
+                document.getElementById('txtres').value = res;
+            }, true);
+            var btnsub = document.getElementById('sub');
+            btnsub.addEventListener('click', function() {
+                // read data from the input:text elements
+                var n1 = parseInt(document.getElementById('txtn1').value);
+                var n2 = parseInt(document.getElementById('txtn2').value);
+                var res = calObj.sub(n1, n2);;
+                document.getElementById('txtres').value = res;
+            }, true);
+            var btnmult = document.getElementById('mult');
+            btnmult.addEventListener('click', function() {
+                // read data from the input:text elements
+                var n1 = parseInt(document.getElementById('txtn1').value);
+                var n2 = parseInt(document.getElementById('txtn2').value);
+                var res = calObj.mult(n1, n2);;
+                document.getElementById('txtres').value = res;
+            }, true);
+            var btndiv = document.getElementById('div');
+            btndiv.addEventListener('click', function() {
+                // read data from the input:text elements
+                var n1 = parseInt(document.getElementById('txtn1').value);
+                var n2 = parseInt(document.getElementById('txtn2').value);
+                var res = calObj.div(n1, n2);;
+                document.getElementById('txtres').value = res;
+            }, true);
+            var btnc = document.getElementById('c');
+            btnc.addEventListener('click', function() {
+                //var inputs = document.getElementsByTagName('input');
+                var inputs = document.getElementsByClassName('c1');
+                for (i = 0; i < inputs.length; i++) {
+                    inputs[i].value = '';
+                }
+            }, true);
+        }
+        window.onload = basicCalculator;
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>
+                <label>N1</label>
+                <input type="text" class="c1" id="txtn1">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>N2</label>
+                <input type="text" class="c1" id="txtn2">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Res</label>
+                <input type="text" class="c1" id="txtres">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="button" value="+" id="add">
+                <input type="button" value="-" id="sub">
+                <input type="button" value="*" id="mult">
+                <input type="button" value="/" id="div">
+                <input type="button" value="c" id="btnc">
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

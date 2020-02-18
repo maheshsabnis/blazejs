@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        // inline callback function
+        // window.onload = function() {
+        // }
+        // named function    
+        function load() {
+            console.log('Window is loaded');
+        }
+
+        function clickMe() {
+            console.log('button is clicked...');
+        }
+
+        function clickMeTarget(evt) {
+            // evt.target is the HTML Button element
+            // evt.target.value the 'value' attribute of the element
+            console.log('button is clicked...' + evt.target.value);
+        }
+        // assign the 'load' function to an 'onload' event 
+        window.onload = load;
+    </script>
+</head>
+
+<body>
+    <!--Inline Event to a DOM element -->
+    <input type="button" value="Click Me" onclick="clickMe()">
+    <hr>
+    <!--Inline Event to a DOM element with the HTML Element Reference-->
+    <input type="button" value="Click Me Target" onclick="clickMeTarget(event)">
+</body>
+
+</html>
