@@ -5,11 +5,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        table tr td {
+            border: double;
+        }
+        
+        thead tbody th {
+            border: double;
+        }
+    </style>
     <script src="app.js"></script>
+    <script>
+        window.onload = function() {
+            var biz = new myClass();
+            var persons;
+            loadOptions();
+
+            persons = biz.getPersons();
+            loadTable(persons);
+
+            document.getElementById('btnnew').addEventListener('click', function() {
+                var inputs = document.getElementsByClassName('c1');
+                for (i in inputs) {
+                    inputs[i].value = '';
+                }
+            }, true);
+
+            document.getElementById('btnsave').addEventListener('click', function() {
+                // JSON object 
+                var person = {
+                    id: document.getElementById('txtid').value,
+                    name: document.getElementById('txtname').value,
+                    age: document.getElementById('txtage').value,
+                    occupation: document.getElementById('lstoccupations').value
+                };
+                persons = biz.addPerson(person);
+                console.log(JSON.stringify(persons));
+                loadTable(persons);
+
+            }, true);
+
+            function loadOptions() {
+                var occps = biz.getOccupations();
+                var opts = '<option value="0">Select Occupation</option>';
+                for (i = 0; i < occps.length; i++) {
+                    opts += '<option value="' + occps[i] + '">' + occps[i] + '</option>'
+                }
+                // dynamically setting the HTML DOM for <select></select>
+                document.getElementById('lstoccupations').innerHTML = opts;
+            }
+
+            function loadTable(persons) {
+                var tr;
+                for (i in persons) {
+                    tr += '<tr><td>' + persons[i].id + '</td><td>' + persons[i].name + '</td><td>' + persons[i].age + '</td><td>' + persons[i].occupation + '</td></tr>'
+                }
+                document.getElementById('tbody').innerHTML = tr;
+            }
+        }
+    </script>
 </head>
 
 <body>
-
+    <h1>Personal Infomation Application</h1>
+    <table>
+        <tr>
+            <td>id</td>
+            <td>
+                <input type="text" id="txtid" class="c1">
+            </td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>
+                <input type="text" id="txtname" class="c1">
+            </td>
+        </tr>
+        <tr>
+            <td>age</td>
+            <td>
+                <input type="text" id="txtage" class="c1">
+            </td>
+        </tr>
+        <tr>
+            <td>occuation</td>
+            <td>
+                <select id="lstoccupations">
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <input type="button" id="btnnew" value="new">
+                <input type="button" id="btnsave" value="save">
+            </td>
+        </tr>
+    </table>
+    <hr>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>age</th>
+                <th>occupation</th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table>
 </body>
 
 </html>

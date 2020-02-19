@@ -1,9 +1,15 @@
 var myClass = function() {
-    var persons = [
-        { id: 101, name: 'A', age: 20 },
-        { id: 102, name: 'B', age: 23 },
-        { id: 103, name: 'C', age: 25 }
+    var occupations = [
+        "Employeed", "Self-Employed", "Un-Employeed", "Doctor", "Teacher", "Engineer"
     ];
+    var persons = [
+        { id: 101, name: 'A', age: 20, occupation: "Employed" },
+        { id: 102, name: 'B', age: 23, occupation: "Doctor" },
+        { id: 103, name: 'C', age: 25, occupation: "Engineer" }
+    ];
+    this.getOccupations = function() {
+        return occupations;
+    };
     this.getPersons = function() {
         return persons;
     };
