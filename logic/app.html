@@ -62,6 +62,11 @@
                 }
                 document.getElementById('tbody').innerHTML = tr;
             }
+            document.getElementById('txtid').addEventListener('keyup', function() {
+                console.log(this.value); // in the scope of the 
+                this.style.backgroundColor = "red";
+            }, true);
+
         }
     </script>
 </head>

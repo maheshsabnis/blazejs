@@ -26,7 +26,7 @@ var myClass = function() {
     }
 }
 
-var obj = new myClass();
-console.log(JSON.stringify(obj.getPersons()));
-var pers = { id: 104, name: 'D', age: -36 };
-console.log(JSON.stringify(obj.addPerson(pers)));
+// var obj = new myClass();
+// console.log(JSON.stringify(obj.getPersons()));
+// var pers = { id: 104, name: 'D', age: -36 };
+// console.log(JSON.stringify(obj.addPerson(pers)));
